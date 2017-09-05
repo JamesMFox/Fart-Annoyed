@@ -6,15 +6,10 @@ class RectF
 {
 public:
 	RectF() = default;
-	RectF(float left_in, float top_in, float right_in, float bottom_in);
-	RectF(Vec2& topleft, Vec2& bottomright)
-	{
-		RectF(topleft.x, topleft.y, bottomright.x, bottomright.y);
-	};
-	RectF(Vec2& topleft, float width, float height)
-	{
-		RectF(Vec2(topleft.x, topleft.y), Vec2(topleft.x + width, topleft.y + height));
-	};
+	RectF(float left_in, float right_in, float top_in, float bottom_in);
+	RectF(const Vec2& topleft, const Vec2& bottomright);
+	RectF(const Vec2& topleft, float width, float height);
+	static RectF FromCenter(const Vec2& center, float halfWidth, float halfHeight);
 	bool IsOverlappingWith(const RectF& other) const;
 
 public:
